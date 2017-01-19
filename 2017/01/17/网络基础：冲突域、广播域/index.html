@@ -1,0 +1,778 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Internet," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="冲突域在一个局域网里， 所有主机共享介质的情况下，当2个或者2个以上主机传递帧时 会出现帧冲突， 导致主机发送帧失败， 这个局域网称为冲突域。简而言之， 以太网上竞争同一宽带的节点集合 。在OSI 模型中， 冲突域被看做是第一层， 用Hub、repeater（中继器）或者简单复制信号的设备连接的所有节点被认为属于同一个冲突域。可以将hub 、repeater看做一根电缆或者导线， 只是简单连接2个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络基础：冲突域、广播域">
+<meta property="og:url" content="http://drewjhung.github.io/2017/01/17/网络基础：冲突域、广播域/index.html">
+<meta property="og:site_name" content="DrewJhung's Blog">
+<meta property="og:description" content="冲突域在一个局域网里， 所有主机共享介质的情况下，当2个或者2个以上主机传递帧时 会出现帧冲突， 导致主机发送帧失败， 这个局域网称为冲突域。简而言之， 以太网上竞争同一宽带的节点集合 。在OSI 模型中， 冲突域被看做是第一层， 用Hub、repeater（中继器）或者简单复制信号的设备连接的所有节点被认为属于同一个冲突域。可以将hub 、repeater看做一根电缆或者导线， 只是简单连接2个">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141245453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141401312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141433843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141512234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141544187?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20130731141636343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-01-19T09:49:55.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络基础：冲突域、广播域">
+<meta name="twitter:description" content="冲突域在一个局域网里， 所有主机共享介质的情况下，当2个或者2个以上主机传递帧时 会出现帧冲突， 导致主机发送帧失败， 这个局域网称为冲突域。简而言之， 以太网上竞争同一宽带的节点集合 。在OSI 模型中， 冲突域被看做是第一层， 用Hub、repeater（中继器）或者简单复制信号的设备连接的所有节点被认为属于同一个冲突域。可以将hub 、repeater看做一根电缆或者导线， 只是简单连接2个">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20130731141245453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drewjhung.github.io/2017/01/17/网络基础：冲突域、广播域/"/>
+
+
+
+
+
+  <title> 网络基础：冲突域、广播域 | DrewJhung's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DrewJhung's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2017/01/17/网络基础：冲突域、广播域/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="DrewJhung">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DrewJhung's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DrewJhung's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网络基础：冲突域、广播域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T14:16:30+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Internet/" itemprop="url" rel="index">
+                    <span itemprop="name">Internet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/17/网络基础：冲突域、广播域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/网络基础：冲突域、广播域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="冲突域"><a href="#冲突域" class="headerlink" title="冲突域"></a>冲突域</h2><p>在一个局域网里， 所有主机共享介质的情况下，当2个或者2个以上主机传递帧时 会出现帧冲突， 导致主机发送帧失败， 这个局域网称为冲突域。简而言之， <strong>以太网上竞争同一宽带的节点集合 </strong>。在OSI 模型中， 冲突域被看做是第一层， 用Hub、repeater（中继器）或者简单复制信号的设备连接的所有节点被认为属于同一个冲突域。可以将hub 、repeater看做一根电缆或者导线， 只是简单连接2个不同的域（LAN），但是他们仍然属于同一个冲突域因为Hub、repeater只是简单的连接 并没有对帧做过滤。不同于Hub、repeater， 网桥则可以等价看成一束电缆。 是否可以划分冲突域列表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">OSI所属层级</th>
+<th style="text-align:center">常用设备</th>
+<th style="text-align:center">是否可以划分冲突域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">第一层</td>
+<td style="text-align:center">Hub、repeater（中继器）、所有简单复制信号的设备</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">第二层</td>
+<td style="text-align:center">网桥、交换机</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">第三层</td>
+<td style="text-align:center">路由器</td>
+<td style="text-align:center">√</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="广播域"><a href="#广播域" class="headerlink" title="广播域"></a>广播域</h2><p>如果一个节点发送广播帧， 所有能够接收到该消息帧的节点构成的集合称为广播域。广播域被认为属于OSI 中的第二层， 所以像Hub（第一层）、交换机（第二层）所连接的节点都被认为是广播域的范围；而位于第三层的路由器可以隔离广播消息，连接不同的广播域。 PS: 一个VLAN 是一个广播域， VLAN 可以隔离广播， 而VLAN 的目的就是隔离广播， 防止广播风暴。</p>
+<h2 id="常见的互联设备工作原理以及其划分的冲突域、广播域"><a href="#常见的互联设备工作原理以及其划分的冲突域、广播域" class="headerlink" title="常见的互联设备工作原理以及其划分的冲突域、广播域"></a>常见的互联设备工作原理以及其划分的冲突域、广播域</h2><ul>
+<li><p>传统以太网操作。传统以太网的拓扑结构就是共享介质的总线型，所谓总线型即 通信信道只有一个， 所有总线上的主机想要通信都需要经过这一个总线， 所以难免发生冲突。一般的解决方法：发送帧之前先侦听网络是否空闲， 如果空闲， 那么会发送帧， 如果不空闲，继续监听网络是否空闲，直到网络空闲。下图是总线型网络：</p>
+<p><img src="http://img.blog.csdn.net/20130731141245453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+</li>
+</ul>
+<p>I. 当host A 单播发送数据给host B， 如果此时host B也要发送数据给host D  这时，他们发送数据的时间冲突， 都发送失败， 所有连接在该总线的主机组成的集合被称为冲突域；</p>
+<p>II. 当host A 广播发送数据时， 所有连接在总线上的主机都能够接收到host A 的数据， 此时， 所有连接在总线上的主机组成的集合又称为广播域。</p>
+<ul>
+<li><p>中继器。</p>
+<p>它工作在第一层，连接2个不同的网络，主要作用：</p>
+<p><em>I. 增强并再生电信号（扩展网络距离， 增强衰弱信号）；</em></p>
+<p><em>II. 兼容2个不同的网络连接（连接粗同轴电缆以太网和细同轴电缆以太网）；</em></p>
+<p>中继器使用场景：</p>
+<p><img src="http://img.blog.csdn.net/20130731141401312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+</li>
+</ul>
+<p>中继器没有过滤信号的功能， 只是将信号传到其他网段上， 所以用中继器连接起来的2个或者多个网段属于一个大的冲突域， 也属于一个大的广播域。</p>
+<ul>
+<li><p>集线器。 它相当于多端口的中继器，集线器通常有8、16或者24个端口， 它可以延长网络通信距离， 并且兼容协议不同的网段， 所有接在集线器上的主机形成一个汇聚点， 通过同一个集线器出口访问Internet。集线器常见部署结构：</p>
+<p><img src="http://img.blog.csdn.net/20130731141433843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+</li>
+</ul>
+<p>所有连接到集线器上的主机都必须通过集线器的一条背板总线才可以访问到内网或者外网，这个连接结构属于星型结构， 并且集线器也没有过滤信号的功能， 所以所有连接到集线器的主机属于同一个冲突域、广播域。</p>
+<ul>
+<li><p>网桥。 网桥属于第二层设备， 能够过滤信号即  如果源机器A与目的机器B属于同一个网段， 网桥不会转发A的消息帧到另外的网段，一个端口对应一个冲突域,网桥可以将一个大的冲突域分成2个冲突域， 所以，减少了其他网段冲突的概率。如果源机器广播消息帧， 网桥也会将消息转发到其他的连接网段上 ， 所以， 由网桥连接的网段属于一个大的广播域。网桥的常用场景： </p>
+<p><img src="http://img.blog.csdn.net/20130731141512234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+</li>
+<li><p>交换机。 可以称为多端口的网桥， 但是不用与网桥的是在一个网段中各个主机并不是用总线， 而是每个主机之间建立一个专用通道， 主机之间通讯并不会发生冲突， 通过增加专用通道，提高可用宽带。交换机常用场景： </p>
+<p><img src="http://img.blog.csdn.net/20130731141544187?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+</li>
+</ul>
+<p>主机之间都有专用通道，每个端口都形成自己的一个冲突域， 其实并不冲突，在发送消息帧时， 该端口上的主机并不和任何其他主机冲突。在某台机器发送广播消息帧时， 交换机并不会过滤广播消息，所以， 交换机连接的网段仍然属于一个大的广播域。</p>
+<ul>
+<li>路由器。 工作在第三层的设备， 可以识别ip地址，并按照路由规则转发数据包。由于路由器默认不转发广播类型的数据到其他网段，所以每个网段作为一个冲突域、广播域。路由器常用场景：</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20130731141636343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGVoZTk3Mzc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="alt"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>冲突域：共享一个介质（总线）的主机组成一个冲突域；</p>
+<p>广播域：某台机器发送广播消息后，所有能够监听到广播消息的主机组成一个广播域。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Internet/" rel="tag"># Internet</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/03/java8新语法/" rel="next" title="java8新语法">
+                <i class="fa fa-chevron-left"></i> java8新语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/01/17/网络基础：冲突域、广播域/"
+     data-title="网络基础：冲突域、广播域"
+     data-content=""
+     data-url="http://drewjhung.github.io/2017/01/17/网络基础：冲突域、广播域/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/17/网络基础：冲突域、广播域/"
+           data-title="网络基础：冲突域、广播域" data-url="http://drewjhung.github.io/2017/01/17/网络基础：冲突域、广播域/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DrewJhung" />
+          <p class="site-author-name" itemprop="name">DrewJhung</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冲突域"><span class="nav-number">1.</span> <span class="nav-text">冲突域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广播域"><span class="nav-number">2.</span> <span class="nav-text">广播域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的互联设备工作原理以及其划分的冲突域、广播域"><span class="nav-number">3.</span> <span class="nav-text">常见的互联设备工作原理以及其划分的冲突域、广播域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DrewJhung</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iissnan-notes"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
