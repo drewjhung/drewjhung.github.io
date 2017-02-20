@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="uml,starUML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="重新认识StarUMLwhat is it?StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。
+why use it?
+世间万物皆有联系，不管是直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="staruml user guide">
+<meta property="og:url" content="http://drewjhung.github.io/2017/02/17/staruml-user-guide/index.html">
+<meta property="og:site_name" content="DrewJhung's Blog">
+<meta property="og:description" content="重新认识StarUMLwhat is it?StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。
+why use it?
+世间万物皆有联系，不管是直">
+<meta property="og:image" content="http://drewjhung.github.io/public/archives_images/project_structure.jpg">
+<meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch02.h1.jpg">
+<meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_125.jpg">
+<meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_126.jpg">
+<meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_128.jpg">
+<meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_129.jpg">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/ClassDiagram2.jpg?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/uni-directional.jpg?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/bi-directional.jpg?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/aggregation.png?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/Composition.png?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/generalization.png?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/realization.jpg?raw=true">
+<meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/associationClass.png?raw=true">
+<meta property="og:image" content="https://raw.githubusercontent.com/drewjhung/drewjhung.github.io/4a09974fa887a6a969feb63ced905a25faea2245/archives_images/SequenceDiagram.jpg">
+<meta property="og:updated_time" content="2017-02-20T06:50:32.555Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="staruml user guide">
+<meta name="twitter:description" content="重新认识StarUMLwhat is it?StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。
+why use it?
+世间万物皆有联系，不管是直">
+<meta name="twitter:image" content="http://drewjhung.github.io/public/archives_images/project_structure.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drewjhung.github.io/2017/02/17/staruml-user-guide/"/>
+
+
+
+
+
+  <title> staruml user guide | DrewJhung's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DrewJhung's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2017/02/17/staruml-user-guide/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="DrewJhung">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DrewJhung's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DrewJhung's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                staruml user guide
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T14:35:12+08:00">
+                2017-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/model-driver/" itemprop="url" rel="index">
+                    <span itemprop="name">model driver</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/model-driver/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/02/17/staruml-user-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/17/staruml-user-guide/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="重新认识StarUML"><a href="#重新认识StarUML" class="headerlink" title="重新认识StarUML"></a>重新认识StarUML</h2><h3 id="what-is-it"><a href="#what-is-it" class="headerlink" title="what is it?"></a>what is it?</h3><p>StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。</p>
+<h3 id="why-use-it"><a href="#why-use-it" class="headerlink" title="why use it?"></a>why use it?</h3><ul>
+<li>世间万物皆有联系，不管是直接还是间接，强联系还是弱联系。如果只是文字叙述这些大大小小的联系，费时又费力，图形化可以更直观，更清晰表达各种联系，而建模工具正是表达各种联系的工具（微笑脸）。</li>
+<li>一个产品从设计到最终上线都是以需求为导向，做需求的人可能需要Use Case Model做需求分析；做设计的人可能需要Design Model做产品设计；做开发的人可能需要Analysis Model, Implementation Model做软件的分析和实现；运维可能需要Deployment Model对最终的软件产品发布、部署。建模工具满足了不同角色的人协同工作， 当然不止是软件开发领域，还涵盖了建筑领域、复杂的工业处理方面等等。</li>
+<li>合理化资源配置、减少成本输出，应用领域广泛，简单实用。</li>
+</ul>
+<h3 id="how-to-do-it-scope"><a href="#how-to-do-it-scope" class="headerlink" title="how to do it[^scope]"></a>how to do it[^scope]</h3><p>[^scope]: the following is only introduction of <strong>software development</strong></p>
+<ul>
+<li><p>软件建模的时候，StarUML会以一个project为最基本的管理单元， project包含一个或者多个model。通常一个project以一个文件的方式保存。 project 可以整合很多小的文件， 每个小文件又可以被其他的project 或者unit文件复用。在StarUML中，只有package, subsystem, model可以组成一个unit， 所有unit 可以包含任何子单元(sub-unit)，用下图简单表示project 和其他unit的关系：<img src="/public/archives_images/project_structure.jpg" alt="alt"></p>
+</li>
+<li><p>StarUML中定义了一些元素，及元素之间的关系， 我只列出比较常见的一些元素: Model, View, Diagram，一个model 可以构建不同角度的diagram， diagram又由很多可视化的view组成 他们的关系如下：</p>
+<p><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch02.h1.jpg" alt="alt"></p>
+</li>
+<li><p>StarUML中给出了5种类型的Model：User Case Model, Analysis Model, Design Model, Implementation Model, Deployment Model；</p>
+</li>
+<li><p>每个model中可以新建11种不同的diagram， 以下我主要介绍下使用常用的diagram时， 比较老司机的方法：</p>
+<p>一、Use Case Diagram中建立连接时，使用技巧：</p>
+<ol>
+<li><p>在Actor和Use Case之间建立多个关联或者直接关联： </p>
+<blockquote>
+<h4 id="Procedure-for-creating-element-related-to-association-directed-assocition"><a href="#Procedure-for-creating-element-related-to-association-directed-assocition" class="headerlink" title="Procedure for creating element related to association/directed assocition"></a>Procedure for creating element related to association/directed assocition</h4><p>In order to create element associated with current element, use shortcut creation syntax.</p>
+<ol>
+<li><p>Double-click element and enter element’s names associated after “–” or “-&gt;” string at the quick dialog. Separate element names with “,” character to relate multiple elements.</p>
+<p>Double-click element and enter element’s names associated after “–” or “-&gt;” string at the quick dialog. Separate element names with “,” character to relate multiple elements.<br><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_125.jpg" alt="img"></p>
+</li>
+<li><p>Press <strong>[Enter]</strong> key and several elements associated with selected element are created and arranged automatically. </p>
+<p>Press <strong>[Enter]</strong> key and several elements associated with selected element are created and arranged automatically.<br><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_126.jpg" alt="img"></p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>在Use Case 之间建立父子关系：</p>
+<blockquote>
+<h4 id="Procedure-for-creating-multiple-child-actors-inherited-from-actor"><a href="#Procedure-for-creating-multiple-child-actors-inherited-from-actor" class="headerlink" title="Procedure for creating multiple child actors inherited from actor"></a>Procedure for creating multiple child actors inherited from actor</h4><p>To create multiple elements inherited from some element,</p>
+<ol>
+<li><p>Enter with “&lt;=” string as following at the quick dialog, and several elements inherited from selected element are created at once.</p>
+<p>Enter with “&lt;=” string as following at the quick dialog, and several elements inherited from selected element are created at once.<br><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_128.jpg" alt="img"></p>
+</li>
+<li><p>Child elements are generated below selected element and arranged automatically.</p>
+<p>Child elements are generated below selected element and arranged automatically.<br><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_129.jpg" alt="img"></p>
+</li>
+</ol>
+<p>If you want to create multiple parent element at once, enter “=&gt;” string instead of “&lt;=” in the quick dialog.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<p>二、modeling with Class Diagram 杂谈：</p>
+<ol>
+<li><p>一个子系统（subsystem）实现一个接口如图：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/ClassDiagram2.jpg?raw=true" alt="alt"></p>
+</li>
+<li><p>简单说下类A和类B之间的关系类型：</p>
+<ul>
+<li><p>Association：2个类之间A和B 之间具有单向或者双向关联。 单向关联指A知道B的存在， 而B却不知道A的存在，举个栗子：某人的年度账单(AnnualBill) 和星巴克(Starbucks)，年度账单需要关联星巴克，而星巴克并不知道该年度账单的关联关系，2者关联关系如下图：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/uni-directional.jpg?raw=true" alt="alt"></p>
+<p>双向关联是双方都知道彼此的存在， 并且相互关联。栗子：航班(Flight)和飞机(plane)之间存在双向关联，一个或者多个航班对应一个飞机， 一个飞机对应一个或多个航班，2者关系如下图：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/bi-directional.jpg?raw=true" alt="alt"></p>
+</li>
+<li><p>Aggregation：2个类之间具有聚合关系，一般地，聚合关系符合2个基本的要素：2个类之间属于整体和部分的关系；部分并不受制于整体的生命周期，即部分独立于整体存在。栗子：汽车(Car)和轮胎(Wheel)之间可看做是基本聚合关系。汽车是一个整体， 轮胎是一部分，轮胎独立于汽车而存在，2着的关系图如下：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/aggregation.png?raw=true" alt="alt"></p>
+</li>
+<li><p>Composition: 2个类之间具有组合关系。一般地，组合关系符合2个基本要素：2个类之间具有从属关系：整体和部分；部分受制于整体的生命周期，即部分依赖于整体。栗子：公司(Company)和部门(Department)之间属于组合关系， 公司是一个整体，部门是一个部分；部门依赖于于公司存在，一个公司不存在， 必然部门也不存在了。2者关系图如下：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/Composition.png?raw=true" alt="alt"></p>
+</li>
+<li><p>Generalization：2个类之间存在父子关系。栗子：父母(Parent)和孩子(Children)， 2者关系图如下：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/generalization.png?raw=true" alt="alt"></p>
+</li>
+<li><p>Realization：2个类之间存在契约关系。一方提供规范标准，另一方负责实现该标准。2者关系图如下：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/realization.jpg?raw=true" alt="alt"></p>
+</li>
+<li><p>AssociationClass：在2个基本关联类A, B之间需要包含其他类C ，类C 只是与A, B 之间的关联有关系， 而与A, B 本身没有关系。栗子：航班（Flight）和乘客之间(Passenger)之间具有双向关联关系， 该双向关联会产生一个关联类差旅费(MileageCredit)，关系图如下：</p>
+<p><img src="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/associationClass.png?raw=true" alt="alt"></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>三、modeling with sequence diagram杂谈：</p>
+<p><em>我一般使用sequence diagram分析源码， 这也是我写这篇文章的真正意图：正确使用sequence diagram。</em></p>
+<p>直接上栗子：</p>
+<p><img src="https://raw.githubusercontent.com/drewjhung/drewjhung.github.io/4a09974fa887a6a969feb63ced905a25faea2245/archives_images/SequenceDiagram.jpg" alt="alt"></p>
+<ol>
+<li>用Player 播放音乐；</li>
+<li>自己觉得好听的音乐；</li>
+<li>通过喜欢的音乐找到比较有特色的歌手；</li>
+<li>if 遇到很喜欢的歌手， then follow him/her；</li>
+<li>听着喜欢的歌曲是一种享受；</li>
+<li>继续听歌， 继续享受。</li>
+</ol>
+<p><em>1、2、3的message被长方形块包着，这个长方形块称为：Combined Fragment， 设置它的InteractionOperator为loop 相当于Java 中的for/while循环，只要符合[I’m alive]这个条件， 就会一直循环1、2、3 这几个message。编号为4的message 被opt的Combined Fragment 包围着， opt 相当于Java中的if then语句， 栗子中表达的意思是if 我 appreciate a singer， then I’ll follow her/him.编号为5、6的被loop 包围， 用法同第一个loop 块一样，5、6表达意思：生活里不能缺少音乐， 音乐给生活带来一些乐趣甚至惊喜， 所以， 我也会一直play music!</em> </p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://staruml.sourceforge.net/docs/user-guide%28en%29/toc.html" target="_blank" rel="external">staruml guide</a></p>
+<p><a href="https://www.ibm.com/developerworks/rational/library/3101.html" target="_blank" rel="external">uml sequence diagram</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/uml/" rel="tag"># uml</a>
+          
+            <a href="/tags/starUML/" rel="tag"># starUML</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/13/awk基础用法(一)/" rel="next" title="awk基础用法(一)">
+                <i class="fa fa-chevron-left"></i> awk基础用法(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/02/17/staruml-user-guide/"
+     data-title="staruml user guide"
+     data-content=""
+     data-url="http://drewjhung.github.io/2017/02/17/staruml-user-guide/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/17/staruml-user-guide/"
+           data-title="staruml user guide" data-url="http://drewjhung.github.io/2017/02/17/staruml-user-guide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DrewJhung" />
+          <p class="site-author-name" itemprop="name">DrewJhung</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重新认识StarUML"><span class="nav-number">1.</span> <span class="nav-text">重新认识StarUML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-it"><span class="nav-number">1.1.</span> <span class="nav-text">what is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-use-it"><span class="nav-number">1.2.</span> <span class="nav-text">why use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-do-it-scope"><span class="nav-number">1.3.</span> <span class="nav-text">how to do it[^scope]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-element-related-to-association-directed-assocition"><span class="nav-number">1.3.1.</span> <span class="nav-text">Procedure for creating element related to association/directed assocition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-multiple-child-actors-inherited-from-actor"><span class="nav-number">1.3.2.</span> <span class="nav-text">Procedure for creating multiple child actors inherited from actor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.4.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DrewJhung</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"iissnan-notes"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
