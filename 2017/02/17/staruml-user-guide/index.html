@@ -94,7 +94,6 @@ why use it?
 <meta property="og:description" content="重新认识StarUMLwhat is it?StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。
 why use it?
 世间万物皆有联系，不管是直">
-<meta property="og:image" content="http://drewjhung.github.io/public/archives_images/project_structure.jpg">
 <meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch02.h1.jpg">
 <meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_125.jpg">
 <meta property="og:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch05_126.jpg">
@@ -109,13 +108,13 @@ why use it?
 <meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/realization.jpg?raw=true">
 <meta property="og:image" content="https://github.com/drewjhung/drewjhung.github.io/blob/master/archives_images/associationClass.png?raw=true">
 <meta property="og:image" content="https://raw.githubusercontent.com/drewjhung/drewjhung.github.io/4a09974fa887a6a969feb63ced905a25faea2245/archives_images/SequenceDiagram.jpg">
-<meta property="og:updated_time" content="2017-02-20T06:50:32.555Z">
+<meta property="og:updated_time" content="2017-02-20T07:03:05.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="staruml user guide">
 <meta name="twitter:description" content="重新认识StarUMLwhat is it?StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。
 why use it?
 世间万物皆有联系，不管是直">
-<meta name="twitter:image" content="http://drewjhung.github.io/public/archives_images/project_structure.jpg">
+<meta name="twitter:image" content="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch02.h1.jpg">
 
 
 
@@ -391,13 +390,16 @@ why use it?
       
         <h2 id="重新认识StarUML"><a href="#重新认识StarUML" class="headerlink" title="重新认识StarUML"></a>重新认识StarUML</h2><h3 id="what-is-it"><a href="#what-is-it" class="headerlink" title="what is it?"></a>what is it?</h3><p>StarUML 是一个做UML(Unified Modeling Language)的建模工具。它基于UML 1.4为此提供了11种diagram， 并且它也兼容UML2.0。可以利用StarUML中的 UML profile对模型驱动架构(Model Driven Architecture)提供支持。</p>
 <h3 id="why-use-it"><a href="#why-use-it" class="headerlink" title="why use it?"></a>why use it?</h3><ul>
-<li>世间万物皆有联系，不管是直接还是间接，强联系还是弱联系。如果只是文字叙述这些大大小小的联系，费时又费力，图形化可以更直观，更清晰表达各种联系，而建模工具正是表达各种联系的工具（微笑脸）。</li>
-<li>一个产品从设计到最终上线都是以需求为导向，做需求的人可能需要Use Case Model做需求分析；做设计的人可能需要Design Model做产品设计；做开发的人可能需要Analysis Model, Implementation Model做软件的分析和实现；运维可能需要Deployment Model对最终的软件产品发布、部署。建模工具满足了不同角色的人协同工作， 当然不止是软件开发领域，还涵盖了建筑领域、复杂的工业处理方面等等。</li>
-<li>合理化资源配置、减少成本输出，应用领域广泛，简单实用。</li>
+<li><p>世间万物皆有联系，不管是直接还是间接，强联系还是弱联系。如果只是文字叙述这些大大小小的联系，费时又费力，图形化可以更直观，更清晰表达各种联系，而建模工具正是表达各种联系的工具（微笑脸）。</p>
+</li>
+<li><p>一个产品从设计到最终上线都是以需求为导向，做需求的人可能需要Use Case Model做需求分析；做设计的人可能需要Design Model做产品设计；做开发的人可能需要Analysis Model, Implementation Model做软件的分析和实现；运维可能需要Deployment Model对最终的软件产品发布、部署。建模工具满足了不同角色的人协同工作， 当然不止是软件开发领域，还涵盖了建筑领域、复杂的工业处理方面等等。</p>
+</li>
+<li><p>合理化资源配置、减少成本输出，应用领域广泛，简单实用。</p>
+<a id="more"></a>
+</li>
 </ul>
-<h3 id="how-to-do-it-scope"><a href="#how-to-do-it-scope" class="headerlink" title="how to do it[^scope]"></a>how to do it[^scope]</h3><p>[^scope]: the following is only introduction of <strong>software development</strong></p>
-<ul>
-<li><p>软件建模的时候，StarUML会以一个project为最基本的管理单元， project包含一个或者多个model。通常一个project以一个文件的方式保存。 project 可以整合很多小的文件， 每个小文件又可以被其他的project 或者unit文件复用。在StarUML中，只有package, subsystem, model可以组成一个unit， 所有unit 可以包含任何子单元(sub-unit)，用下图简单表示project 和其他unit的关系：<img src="/public/archives_images/project_structure.jpg" alt="alt"></p>
+<h3 id="how-to-do-it"><a href="#how-to-do-it" class="headerlink" title="how to do it"></a>how to do it</h3><ul>
+<li><p>软件建模的时候，StarUML会以一个project为最基本的管理单元， project包含一个或者多个model。通常一个project以一个文件的方式保存。 project 可以整合很多小的文件， 每个小文件又可以被其他的project 或者unit文件复用。在StarUML中，只有package, subsystem, model可以组成一个unit， 所有unit 可以包含任何子单元(sub-unit)。</p>
 </li>
 <li><p>StarUML中定义了一些元素，及元素之间的关系， 我只列出比较常见的一些元素: Model, View, Diagram，一个model 可以构建不同角度的diagram， diagram又由很多可视化的view组成 他们的关系如下：</p>
 <p><img src="http://staruml.sourceforge.net/docs/user-guide%28en%29/images/ch02.h1.jpg" alt="alt"></p>
@@ -668,7 +670,7 @@ why use it?
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重新认识StarUML"><span class="nav-number">1.</span> <span class="nav-text">重新认识StarUML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-it"><span class="nav-number">1.1.</span> <span class="nav-text">what is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-use-it"><span class="nav-number">1.2.</span> <span class="nav-text">why use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-do-it-scope"><span class="nav-number">1.3.</span> <span class="nav-text">how to do it[^scope]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-element-related-to-association-directed-assocition"><span class="nav-number">1.3.1.</span> <span class="nav-text">Procedure for creating element related to association/directed assocition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-multiple-child-actors-inherited-from-actor"><span class="nav-number">1.3.2.</span> <span class="nav-text">Procedure for creating multiple child actors inherited from actor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.4.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重新认识StarUML"><span class="nav-number">1.</span> <span class="nav-text">重新认识StarUML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-it"><span class="nav-number">1.1.</span> <span class="nav-text">what is it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-use-it"><span class="nav-number">1.2.</span> <span class="nav-text">why use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-do-it"><span class="nav-number">1.3.</span> <span class="nav-text">how to do it</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-element-related-to-association-directed-assocition"><span class="nav-number">1.3.1.</span> <span class="nav-text">Procedure for creating element related to association/directed assocition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Procedure-for-creating-multiple-child-actors-inherited-from-actor"><span class="nav-number">1.3.2.</span> <span class="nav-text">Procedure for creating multiple child actors inherited from actor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.4.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
             
 
           </div>
