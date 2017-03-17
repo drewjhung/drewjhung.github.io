@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,hello, hexo,quick start,python," />
+  <meta name="keywords" content="java concurrency," />
 
 
 
@@ -84,34 +84,16 @@
 
 
 
-<meta name="description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server1$ hexo server
-More info: Server
-Generate static files1$ hexo generate
-More info: Generating
-Deploy to remote sites1$">
+<meta name="description" content="Synchronized vs. Volatilejmm（java memory model）使所有排序指令happens-before 规则。synchronized 和 volatile 都会使得线程本地缓存失效， 重新从主存取值；在多线程操作下， 会使编译器不能做重排序的优化（遵循happens-before）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://drewjhung.github.io/2016/11/24/hello-world/index.html">
+<meta property="og:title" content="synchronized vs volatile in java">
+<meta property="og:url" content="http://drewjhung.github.io/2017/03/17/synchronized-vs-volatile-in-java/index.html">
 <meta property="og:site_name" content="DrewJhung's Blog">
-<meta property="og:description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server1$ hexo server
-More info: Server
-Generate static files1$ hexo generate
-More info: Generating
-Deploy to remote sites1$">
-<meta property="og:updated_time" content="2016-11-24T06:33:09.551Z">
+<meta property="og:description" content="Synchronized vs. Volatilejmm（java memory model）使所有排序指令happens-before 规则。synchronized 和 volatile 都会使得线程本地缓存失效， 重新从主存取值；在多线程操作下， 会使编译器不能做重排序的优化（遵循happens-before）">
+<meta property="og:updated_time" content="2017-03-17T04:10:06.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server1$ hexo server
-More info: Server
-Generate static files1$ hexo generate
-More info: Generating
-Deploy to remote sites1$">
+<meta name="twitter:title" content="synchronized vs volatile in java">
+<meta name="twitter:description" content="Synchronized vs. Volatilejmm（java memory model）使所有排序指令happens-before 规则。synchronized 和 volatile 都会使得线程本地缓存失效， 重新从主存取值；在多线程操作下， 会使编译器不能做重排序的优化（遵循happens-before）">
 
 
 
@@ -139,13 +121,13 @@ Deploy to remote sites1$">
 
 
 
-  <link rel="canonical" href="http://drewjhung.github.io/2016/11/24/hello-world/"/>
+  <link rel="canonical" href="http://drewjhung.github.io/2017/03/17/synchronized-vs-volatile-in-java/"/>
 
 
 
 
 
-  <title> Hello World | DrewJhung's Blog </title>
+  <title> synchronized vs volatile in java | DrewJhung's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +257,7 @@ Deploy to remote sites1$">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2016/11/24/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2017/03/17/synchronized-vs-volatile-in-java/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="DrewJhung">
@@ -299,7 +281,7 @@ Deploy to remote sites1$">
             
             
               
-                Hello World
+                synchronized vs volatile in java
               
             
           </h1>
@@ -312,8 +294,8 @@ Deploy to remote sites1$">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-24T10:33:00+08:00">
-                2016-11-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T11:44:39+08:00">
+                2017-03-17
               </time>
             
 
@@ -331,8 +313,8 @@ Deploy to remote sites1$">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搭建博客/" itemprop="url" rel="index">
-                    <span itemprop="name">搭建博客</span>
+                  <a href="/categories/concurrency/" itemprop="url" rel="index">
+                    <span itemprop="name">concurrency</span>
                   </a>
                 </span>
 
@@ -346,8 +328,8 @@ Deploy to remote sites1$">
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/24/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/03/17/synchronized-vs-volatile-in-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/synchronized-vs-volatile-in-java/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,14 +360,18 @@ Deploy to remote sites1$">
       
 
       
-        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="Synchronized-vs-Volatile"><a href="#Synchronized-vs-Volatile" class="headerlink" title="Synchronized vs. Volatile"></a>Synchronized vs. Volatile</h2><p><strong>jmm（java memory model）使所有排序指令happens-before 规则。synchronized 和 volatile 都会使得线程本地缓存失效， 重新从主存取值；在多线程操作下， 会使编译器不能做重排序的优化（遵循happens-before） </strong></p>
+<a id="more"></a>
+<p>二者相同点：</p>
+<ul>
+<li>保证公共属性值得可见性</li>
+</ul>
+<p>这2个的区别：</p>
+<ul>
+<li>synchronized 保证公共属性的可见性和原子性；volatile 则只能保证可见性不能保证原子性， 举个栗子：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * 1、value++; 操作需要2步操作：</div><div class="line">     *  (1). int tmp = value;</div><div class="line">     *  (2). value = tmp + 1</div><div class="line">     * 2、线程A 在操作完(1)之后， </div><div class="line">     * 并且已经做了(2)的相加操作， </div><div class="line">     * 当要赋值的时候另一个线程B， 操作(1)(2)， </div><div class="line">     * 实际上应该加了2次， 但是最终计算只相加了一次 </div><div class="line">     */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotBeAtomic</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> value++;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://stackoverflow.com/questions/3488703/when-exactly-do-you-use-the-volatile-keyword-in-java" target="_blank" rel="external"><a href="http://stackoverflow.com/questions/3488703/when-exactly-do-you-use-the-volatile-keyword-in-java" target="_blank" rel="external">When exactly do you use the volatile keyword in Java?</a></a></p>
 
       
     </div>
@@ -409,13 +395,7 @@ Deploy to remote sites1$">
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/hello-hexo/" rel="tag"># hello, hexo</a>
-          
-            <a href="/tags/quick-start/" rel="tag"># quick start</a>
-          
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/java-concurrency/" rel="tag"># java concurrency</a>
           
         </div>
       
@@ -424,15 +404,15 @@ Deploy to remote sites1$">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/17/staruml-user-guide/" rel="next" title="staruml user guide">
+                <i class="fa fa-chevron-left"></i> staruml user guide
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/21/Install-mysql5-7-on-centos/" rel="prev" title="Install mysql5.7 on centos">
-                Install mysql5.7 on centos <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -447,10 +427,10 @@ Deploy to remote sites1$">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/11/24/hello-world/"
-     data-title="Hello World"
+        <div class="ds-share flat" data-thread-key="2017/03/17/synchronized-vs-volatile-in-java/"
+     data-title="synchronized vs volatile in java"
      data-content=""
-     data-url="http://drewjhung.github.io/2016/11/24/hello-world/">
+     data-url="http://drewjhung.github.io/2017/03/17/synchronized-vs-volatile-in-java/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -477,8 +457,8 @@ Deploy to remote sites1$">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/24/hello-world/"
-           data-title="Hello World" data-url="http://drewjhung.github.io/2016/11/24/hello-world/">
+      <div class="ds-thread" data-thread-key="2017/03/17/synchronized-vs-volatile-in-java/"
+           data-title="synchronized vs volatile in java" data-url="http://drewjhung.github.io/2017/03/17/synchronized-vs-volatile-in-java/">
       </div>
     
   </div>
@@ -575,7 +555,7 @@ Deploy to remote sites1$">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized-vs-Volatile"><span class="nav-number">1.</span> <span class="nav-text">Synchronized vs. Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
