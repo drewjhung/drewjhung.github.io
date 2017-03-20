@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mysql,install mysql,centos7," />
+  <meta name="keywords" content="计算机基础," />
 
 
 
@@ -84,28 +84,16 @@
 
 
 
-<meta name="description" content="The step of Installing Mysql5.7.17楼主只介绍一种rpm包安装的方式（相对比较简单):
-
-下载合适的rpm， download mysql’s rpm
-
-根据你的Linux系统执行如下命令（楼主的Linux 系统是centos7 ）：yum localinstall mysql57-community-release-el7-{version-number}.noa">
+<meta name="description" content="二进制表示一个字节=8 bit，最高位表示符号位， 不计入数值。正整数最高位是0， 负整数最高位是1。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Install mysql5.7 on centos">
-<meta property="og:url" content="http://drewjhung.github.io/2016/12/21/Install-mysql5-7-on-centos/index.html">
+<meta property="og:title" content="负数的二进制为什么用补码表示">
+<meta property="og:url" content="http://drewjhung.github.io/2017/03/20/负数的二进制为什么用补码表示/index.html">
 <meta property="og:site_name" content="DrewJhung's Blog">
-<meta property="og:description" content="The step of Installing Mysql5.7.17楼主只介绍一种rpm包安装的方式（相对比较简单):
-
-下载合适的rpm， download mysql’s rpm
-
-根据你的Linux系统执行如下命令（楼主的Linux 系统是centos7 ）：yum localinstall mysql57-community-release-el7-{version-number}.noa">
-<meta property="og:updated_time" content="2016-12-21T06:35:12.443Z">
+<meta property="og:description" content="二进制表示一个字节=8 bit，最高位表示符号位， 不计入数值。正整数最高位是0， 负整数最高位是1。">
+<meta property="og:updated_time" content="2017-03-20T07:33:44.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Install mysql5.7 on centos">
-<meta name="twitter:description" content="The step of Installing Mysql5.7.17楼主只介绍一种rpm包安装的方式（相对比较简单):
-
-下载合适的rpm， download mysql’s rpm
-
-根据你的Linux系统执行如下命令（楼主的Linux 系统是centos7 ）：yum localinstall mysql57-community-release-el7-{version-number}.noa">
+<meta name="twitter:title" content="负数的二进制为什么用补码表示">
+<meta name="twitter:description" content="二进制表示一个字节=8 bit，最高位表示符号位， 不计入数值。正整数最高位是0， 负整数最高位是1。">
 
 
 
@@ -133,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://drewjhung.github.io/2016/12/21/Install-mysql5-7-on-centos/"/>
+  <link rel="canonical" href="http://drewjhung.github.io/2017/03/20/负数的二进制为什么用补码表示/"/>
 
 
 
 
 
-  <title> Install mysql5.7 on centos | DrewJhung's Blog </title>
+  <title> 负数的二进制为什么用补码表示 | DrewJhung's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2016/12/21/Install-mysql5-7-on-centos/">
+  <link itemprop="mainEntityOfPage" href="http://drewjhung.github.io/2017/03/20/负数的二进制为什么用补码表示/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="DrewJhung">
@@ -293,7 +281,7 @@
             
             
               
-                Install mysql5.7 on centos
+                负数的二进制为什么用补码表示
               
             
           </h1>
@@ -306,8 +294,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T12:23:35+08:00">
-                2016-12-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T14:23:52+08:00">
+                2017-03-20
               </time>
             
 
@@ -325,8 +313,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/" itemprop="url" rel="index">
-                    <span itemprop="name">运维</span>
+                  <a href="/categories/计算机渣渣必知必看/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机渣渣必知必看</span>
                   </a>
                 </span>
 
@@ -340,8 +328,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/21/Install-mysql5-7-on-centos/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/Install-mysql5-7-on-centos/" itemprop="commentCount"></span>
+                <a href="/2017/03/20/负数的二进制为什么用补码表示/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/负数的二进制为什么用补码表示/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,40 +360,11 @@
       
 
       
-        <h2 id="The-step-of-Installing-Mysql5-7-17"><a href="#The-step-of-Installing-Mysql5-7-17" class="headerlink" title="The step of Installing Mysql5.7.17"></a>The step of Installing Mysql5.7.17</h2><p><strong>楼主只介绍一种rpm包安装的方式（相对比较简单):</strong></p>
-<ol>
-<li><p>下载合适的rpm， <a href="http://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">download mysql’s rpm</a></p>
-</li>
-<li><p>根据你的Linux系统执行如下命令（楼主的Linux 系统是centos7 ）：<code>yum localinstall mysql57-community-release-el7-{version-number}.noarch.rpm</code><a id="more"></a></p>
-</li>
-<li><p>选择一个已经发布的GA series安装， 默认是mysql 最新的版本5.7， 可以使用命令验证你的安装包， 命令如下<code>yum repolist enabled | grep mysql</code></p>
-</li>
-<li><p>安装mysql server: <code>yum install mysql-community-server</code></p>
-</li>
-<li><p>启动mysql server: <code>service mysqld start</code></p>
-</li>
-<li><p>你可以使用命令验证mysql server 是否安装并启动成功，命令如下：<code>service mysqld status</code>， 如果结果出现 类似 Active: active (running) 或者 mysqld (pid 3066) is running.这样的字样 即说明安装成功！</p>
-</li>
-<li><p>至此，</p>
-<ul>
-<li><p>mysql server 已经完成初始化；</p>
-</li>
-<li><p>data 目录下 已经产生一个SSL 证书和 key 文件；</p>
-</li>
-<li><p>validate_password插件已经被安装并且可以使用；</p>
-</li>
-<li><p>一个超级用户’root’@localhost 也已经被创建。这个超级用户的密码被设置并且存在于error log file中， 可以用如下命令查看超级用户的初始密码：<code>grep &#39;temporary password&#39; /var/log/mysqld.log</code></p>
-</li>
-<li><p>得到这个初始化密码后，你就可以以root 身份登陆了， 如果你想重置密码可以使用如下命令：<code>mysql -uroot -p</code>（以root 用户登陆） ， 在等待输入的地方 输入你的初始化密码， 然后利用mysql 命令：<code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;MyNewPass4!&#39;;</code>重置即可。</p>
-<p>​</p>
-</li>
-</ul>
-</li>
-<li><p>mysql server 安装完成。</p>
-</li>
-</ol>
-<p><strong>上面的步骤介绍全部来自于mysql 官方文档</strong></p>
-<p><a href="http://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html" target="_blank" rel="external">Reference article from Mysql official document</a></p>
+        <h2 id="二进制表示"><a href="#二进制表示" class="headerlink" title="二进制表示"></a>二进制表示</h2><p>一个字节=8 bit，最高位表示符号位， 不计入数值。正整数最高位是0， 负整数最高位是1。</p>
+<a id="more"></a>
+<h2 id="负数说：哼！我就不用补码"><a href="#负数说：哼！我就不用补码" class="headerlink" title="负数说：哼！我就不用补码"></a>负数说：哼！我就不用补码</h2><p>用不用补码都是人类赋予计算机的一种表示方式， OK ， 我们不用补码， 就是根据上文中提到的<em>正整数最高位是1，负整数最高位是0</em> 的表示方式， 做个幼稚园的题目：<code>3 - 1</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 特别说明：① 为了方便， 这里的二进制表示均用1字节表示；② 计算机中只有加法电路--&gt;</span></div><div class="line">3的二进制：  00000011</div><div class="line">-1的二进制： 10000001</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 利用加法电路对上面2个数做加法--&gt;</span></div><div class="line">恒成立的表达式： 3 - 1 = 3 + (-1) </div><div class="line">  00000011</div><div class="line">+</div><div class="line">  10000001</div><div class="line">--------------------</div><div class="line">  10000100</div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 利用上述计算， 得到的结果是 3+(-1)=-4， 结果显然错误。 这意味着 整数加减法 需要2套电路实现：正整数+ 正整数、 正整数+负整数。 用原码表示负数既然不是很方便， 于是聪明的计算机科学家想到能不能改变的负数的表示方式， 使得整数相加减公用一套加法电路--&gt;</span></div><div class="line">3 - 1 其实它也是加法运算：3 + (-1) </div><div class="line">-1 是 0 - 1的结果， 利用二进制表示 0 - 1： </div><div class="line">  00000000</div><div class="line">-</div><div class="line">  00000001</div><div class="line">--------------------</div><div class="line">  </div><div class="line"><span class="comment">&lt;!-- 显然， 这样做减法也减不开， 我们尝试借一位--&gt;</span></div><div class="line"> 100000000                                        00000011</div><div class="line">-						----计算 3 + (-1)-----&gt; +</div><div class="line">  00000001										  11111111</div><div class="line">--------------------							------------------</div><div class="line"> 011111111										 000000010</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 得到的结果是9 bit， 假设这是个8 bit机器， 第9位会被舍弃, 利用这种方法得到 3 + (-1) = 2。 在上面的式子中， 100000000 = 11111111 + 00000001， 利用 11111111 + 00000001 替换100000000， 核心原则：把一切减法的地方换成等价的加法运算 --&gt;</span></div><div class="line"></div><div class="line">  11111111</div><div class="line">-</div><div class="line">  00000001</div><div class="line">----------------</div><div class="line">  11111110          <span class="comment">&lt;!-- 取反 --&gt;</span></div><div class="line">+</div><div class="line">  00000001           <span class="comment">&lt;!-- 加 1 --&gt;</span></div><div class="line">-----------------</div><div class="line">  11111111</div><div class="line"></div><div class="line">上面的式子就是负数的取反加1的由来。</div></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.cnblogs.com/wainiwann/archive/2012/08/03/2621242.html" target="_blank" rel="external">负数二进制的表示方式</a></p>
 
       
     </div>
@@ -429,11 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
-          
-            <a href="/tags/install-mysql/" rel="tag"># install mysql</a>
-          
-            <a href="/tags/centos7/" rel="tag"># centos7</a>
+            <a href="/tags/计算机基础/" rel="tag"># 计算机基础</a>
           
         </div>
       
@@ -442,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/03/17/synchronized-vs-volatile-in-java/" rel="next" title="synchronized vs volatile in java">
+                <i class="fa fa-chevron-left"></i> synchronized vs volatile in java
               </a>
             
           </div>
@@ -451,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/21/mysql出错码及对应的原因和解决办法/" rel="prev" title="mysql出错码及对应的原因和解决办法">
-                mysql出错码及对应的原因和解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -469,10 +420,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/21/Install-mysql5-7-on-centos/"
-     data-title="Install mysql5.7 on centos"
+        <div class="ds-share flat" data-thread-key="2017/03/20/负数的二进制为什么用补码表示/"
+     data-title="负数的二进制为什么用补码表示"
      data-content=""
-     data-url="http://drewjhung.github.io/2016/12/21/Install-mysql5-7-on-centos/">
+     data-url="http://drewjhung.github.io/2017/03/20/负数的二进制为什么用补码表示/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -499,8 +450,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/21/Install-mysql5-7-on-centos/"
-           data-title="Install mysql5.7 on centos" data-url="http://drewjhung.github.io/2016/12/21/Install-mysql5-7-on-centos/">
+      <div class="ds-thread" data-thread-key="2017/03/20/负数的二进制为什么用补码表示/"
+           data-title="负数的二进制为什么用补码表示" data-url="http://drewjhung.github.io/2017/03/20/负数的二进制为什么用补码表示/">
       </div>
     
   </div>
@@ -597,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-step-of-Installing-Mysql5-7-17"><span class="nav-number">1.</span> <span class="nav-text">The step of Installing Mysql5.7.17</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制表示"><span class="nav-number">1.</span> <span class="nav-text">二进制表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负数说：哼！我就不用补码"><span class="nav-number">2.</span> <span class="nav-text">负数说：哼！我就不用补码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
