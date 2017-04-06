@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://drewjhung.github.io/2017/04/06/导出文件的文件名乱码-解决方法/index.html">
 <meta property="og:site_name" content="DrewJhung's Blog">
 <meta property="og:description" content="Java中导出文件的文件名乱码解决方法直接上代码~_~">
-<meta property="og:updated_time" content="2017-04-06T09:42:50.533Z">
+<meta property="og:updated_time" content="2017-04-06T09:50:13.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="导出文件的文件名乱码----解决方法">
 <meta name="twitter:description" content="Java中导出文件的文件名乱码解决方法直接上代码~_~">
@@ -370,6 +370,8 @@
 <li><em>你也可以把上面的方法encodeFileName(String fileName)换个写法：</em></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">encodeFileName</span><span class="params">(String userAgent, String fileName)</span></span>&#123;</div><div class="line">  <span class="keyword">try</span>&#123;</div><div class="line">    fileName = StringUtils.contains(userAgent, <span class="string">"Mozilla"</span>) ? URLEncoder.encode(fileName, <span class="string">"ISO8859-1"</span>) : URLEncoder.encode(fileName, <span class="string">"UTF-8"</span>);</div><div class="line">    <span class="keyword">return</span> fileName;</div><div class="line">  &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e)&#123;</div><div class="line">    e.printStackTrace();</div><div class="line">    <span class="keyword">return</span> fileName;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>参考资料：<br><a href="http://blog.csdn.net/crazycoder2010/article/details/7261992" target="_blank" rel="external">感谢CSDN的大神们!</a></p>
+
       
     </div>
 
@@ -554,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中导出文件的文件名乱码解决方法"><span class="nav-number">1.</span> <span class="nav-text">Java中导出文件的文件名乱码解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中导出文件的文件名乱码解决方法"><span class="nav-number">1.</span> <span class="nav-text">Java中导出文件的文件名乱码解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
